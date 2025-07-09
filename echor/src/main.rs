@@ -3,7 +3,7 @@ use clap::Parser;
 #[derive(Parser, Debug)]
 #[command(author, about, version, long_about = None)]
 struct Args {
-    #[arg()]
+    #[arg(required = true)]
     message: Vec<String>,
 
     #[arg(short = 'n')]
@@ -12,7 +12,6 @@ struct Args {
 
 fn main() {
     let args = Args::parse();
-    println!("{:?}", args);
     print!("{}", args.message.join(" "));
     if !args.omit_newline {
         println!();
